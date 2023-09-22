@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.18/katex.min.js"></script>
+    <title>CCapture tutorial</title>
+</head>
+<body class="bg-neutral-800 flex flex-col justify-center items-center h-screen gap-8">
+
+    <main style="zoom: 75%;" class="outline outline-white">
+        <!-- p5 appends canvas element -->
+        <!-- <div id="equationText">2x + \frac{3}{4}</div> -->
+    </main>
+    <input type="range" class="w-1/2" id="frameSlider" min="0">
+    <div class=" w-full flex justify-center items-center text-white gap-4" id="toolbar">
+        <button class="px-4 py-2 border">FPS - <span id="FPS"></span></button>
+        <button class="px-4 py-2 border hover:bg-neutral-700" id="capture">Capture</button>
+    </div>
+
+
+    
+
+
+
+
+    <script src="./p5.js"></script>
+
+    <script src="./sketch.js"></script>
+    <script src="./shape.js"></script>
+    <script src="./script.js"></script>
+    <script src="./rect.js"></script>
+    <script src="./api.js"></script>
+    <script src="./ease.js"></script>
+    <script src="./error.js"></script>
+    <script src="./text.js"></script>
+    
+    <script src="./anim_code/scene1.js"></script>
+
+
+    <script src="./src/CCapture.js"></script>
+    <script src="./src/webm-writer-0.2.0.js"></script>
+    <script src="./src/download.js"></script> 
+
+
+    <script>
+        var capturer = new CCapture ({
+            format: 'webm',
+            framerate: 60,
+            verbose: true
+        })
+    </script>
+    
+</body>
+</html>
