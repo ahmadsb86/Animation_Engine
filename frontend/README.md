@@ -11,7 +11,7 @@ But I like the idea of a fully client-side HTML5 canvas based 2d animation engin
 
 Display shapes on the screen is done using the p5.js library which itself is a wrapper for the HTML5 Canvas API. The p5.js library makes it much easier to work with the HTML5 Canvas API to draw pretty much anything on the screen.
 
-# Set-up Phase
+# Construct Phase
 
 Whenever the page is reloaded, two phases of the program execute. The first is the set-up phase. The set-up phase is where the user-defiend `go()` function is called
 
@@ -26,3 +26,12 @@ The `.anims` object stores each property (e.g. color, width, height) of a shape.
 # Play phase
 
 Once the set-up phase is over and all animations have been added to the timeline, the play phase commences in which the animation is played frame by frame. For each shape, the state (an object representing properties of the shape such as x, y, width, height, etc.) is computed and then the shape is displayed. This process is repeated for each frame.
+
+# Anatomy of an animation
+
+An single animation (on one prop) is represented as a single array with the following values in each index
+0: start value (of prop)
+1: end value (of prop)
+2: start frame
+3: end frame
+4: easing

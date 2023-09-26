@@ -1,7 +1,5 @@
 class shape {
   constructor(inputData) {
-    this.index = shapeIndexCounter$;
-    shapeIndexCounter$++;
     this.props = {
       //Set some default values. Use of inputData and modifications to default are made by derived classes
       x: 0,
@@ -11,9 +9,10 @@ class shape {
       stroke: 255,
       strokeWidth: 0,
       opacity: 0,
-      scale: 2,
+      scale: 1,
     };
   }
+  //add an animation to animation timeline (this.props[])
   addAnim(prop, end, duration, easing, sync = false) {
     if (typeof this.props[prop] == "number") {
       this.props[prop] = [
@@ -31,6 +30,7 @@ class shape {
     }
     if (!sync) cursor += duration;
   }
+  //get all props on a specific frame
   getState(frame) {
     let returnObj = {};
     for (let prop of Object.keys(this.props)) {
@@ -44,11 +44,7 @@ class shape {
           //Reverse looping all animations on that property
           if (this.props[prop][i][2] <= frame) {
             //pick latest animation that started before current frame
-            returnObj[prop] = ease$(
-              frame,
-              this.props[prop][i],
-              this.props[prop][4]
-            );
+            returnObj[prop] = ease$(frame, this.props[prop][i]);
             break;
           }
         }
@@ -56,6 +52,7 @@ class shape {
     }
     return returnObj;
   }
+  //defined by derived class
   display(p, frame) {
     //do smth
   }

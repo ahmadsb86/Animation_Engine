@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.18/katex.min.js"></script>
-    <title>CCapture tutorial</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script >
+
+        function svgify(){
+            output = document.getElementById('output');
+                  output.innerHTML = '';
+                    var options = MathJax.getMetricsFor(output);
+                  MathJax.tex2svgPromise(String.raw`x = {-b \pm \sqrt{b^2-4ac} \over 2a}.`, options).then(function (node) {
+                    output.appendChild(node);
+                  })
+        }
+        
+        </script>
+
+    <title>Frong</title>
 </head>
 <body class="bg-neutral-800 flex flex-col justify-center items-center h-screen gap-8">
 
@@ -13,10 +27,12 @@
         <!-- p5 appends canvas element -->
         <!-- <div id="equationText">2x + \frac{3}{4}</div> -->
     </main>
+    <!-- <div id="output" class="text-white"></div> -->
     <input type="range" class="w-1/2" id="frameSlider" min="0">
     <div class=" w-full flex justify-center items-center text-white gap-4" id="toolbar">
         <button class="px-4 py-2 border">FPS - <span id="FPS"></span></button>
         <button class="px-4 py-2 border hover:bg-neutral-700" id="capture">Capture</button>
+        <button class="px-4 py-2 border hover:bg-neutral-700" id="addMath" onclick="svgify()">Svgify</button>
     </div>
 
 
@@ -35,6 +51,7 @@
     <script src="./ease.js"></script>
     <script src="./error.js"></script>
     <script src="./text.js"></script>
+    <script src="./math.js"></script>
     
     <script src="./anim_code/scene1.js"></script>
 
@@ -51,6 +68,9 @@
             verbose: true
         })
     </script>
+
+
+
     
 </body>
 </html>

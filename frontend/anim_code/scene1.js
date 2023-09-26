@@ -5,11 +5,22 @@ function preGo() {
 }
 
 function go() {
-  wait(30);
-  text({
-    x: width / 4,
+  wait(100);
+  math({
+    x: width / 2,
+    y: height / 2 - 200,
+    MathJax: String.raw`x = {-b \pm \sqrt{b^2-4ac} \over 2a}`,
+  });
+  wait(100);
+  math({
+    x: width / 2,
     y: height / 2,
-    text: "sum_(i=1)^n i^3=((n(n+1))/2)^2",
-  }).addAnim("rot", 720, 160, "linear", true);
-  rect(0.75, 0.5, { fill: "#cc4444" }).addAnim("rot", 720, 160);
+    MathJax: String.raw`x = 2b({  +b \pm \sqrt{b^2-4ac} \over 2a  })`,
+  });
+  wait(100);
+  math({
+    x: width / 2,
+    y: height / 2 + 200,
+    MathJax: String.raw`x = 2a^{-1}({-b \pm \sqrt{b^2-4ac}})`,
+  });
 }

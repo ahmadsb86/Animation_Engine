@@ -45,6 +45,12 @@ function text(options) {
   return createShape$("text", options);
 }
 
+function math(options) {
+  console.log(arguments);
+
+  return createShape$("math", options);
+}
+
 function createShape$(type, options) {
   let shape;
   switch (type) {
@@ -58,12 +64,18 @@ function createShape$(type, options) {
         ...options,
       });
       break;
+    case "math":
+      shape = new mathShape({
+        ...options,
+      });
+      break;
 
     default:
       break;
   }
 
-  shape.addAnim("opacity", 255, 20, "linear", true);
+  shape.addAnim("opacity", 255, 10, "ease", true); //add a fade in effect to all elms
+  shape.addAnim("y", options.y - 10, 20, "ease", true); //add a slight move it in effect to all elms
 
   shapes$.push(shape);
   return shape;
